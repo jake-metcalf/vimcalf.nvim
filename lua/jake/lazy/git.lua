@@ -1,26 +1,46 @@
 return {
-  {
-    'lewis6991/gitsigns.nvim',
-    opts = {},
-  },
-{
-    "kdheepak/lazygit.nvim",
-    lazy = true,
-    cmd = {
-        "LazyGit",
-        "LazyGitConfig",
-        "LazyGitCurrentFile",
-        "LazyGitFilter",
-        "LazyGitFilterCurrentFile",
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = {},
     },
-    -- optional for floating window border decoration
-    dependencies = {
-        "nvim-lua/plenary.nvim",
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim", -- required
+            "sindrets/diffview.nvim", -- optional - Diff integration
+            "echasnovski/mini.pick", -- optional
+        },
+        config = function()
+            local neogit = require "neogit"
+            vim.keymap.set("n", "<leader>gs", neogit.open, { noremap = true, silent = true })
+        end,
     },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-        { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    }
-},
+    {
+        "sindrets/diffview.nvim",
+        config = function()
+            require("diffview").setup()
+
+            local function get_default_branch_name()
+                local res = vim.system({ "git", "rev-parse", "--verify", "main" }, { capture_output = true }):wait()
+                return res.code == 0 and "main" or "master"
+            end
+
+            vim.keymap.set("n", "<leader>vh", require("gitsigns").preview_hunk, { desc = "Preview hunk" })
+
+            -- Diff against local master branch
+            vim.keymap.set("n", "<leader>hm", function()
+                vim.cmd("DiffviewOpen " .. get_default_branch_name())
+            end, { desc = "Diff against master" })
+
+            -- Diff against remote master branch
+            vim.keymap.set("n", "<leader>hM", function()
+                vim.cmd("DiffviewOpen HEAD..origin/" .. get_default_branch_name())
+            end, { desc = "Diff against origin/master" })
+
+            vim.keymap.set("n", "<leader>hh", "<cmd>DiffviewFileHistory<cr>", { desc = "Repo history" })
+            vim.keymap.set("n", "<leader>hf", "<cmd>DiffviewFileHistory --follow %<cr>", { desc = "File history" })
+            vim.keymap.set("v", "<leader>hl", "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", { desc = "Range history" })
+            vim.keymap.set("n", "<leader>ho", "<cmd>DiffviewOpen<cr>", { desc = "Repo diff" })
+        end,
+    },
 }

@@ -7,7 +7,7 @@ local M = {
           ensure_installed = { "c", "lua", "vim", "vimdoc", "typescript", "tsx", "javascript", "html", "css" },
           sync_install = false,
           highlight = { enable = true },
-          indent = { enable = true },  
+          indent = { enable = true }
         }
 }
 
