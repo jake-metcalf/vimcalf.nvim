@@ -25,7 +25,7 @@ return {
             desc = "Smart Find Files",
         },
         {
-            "<leader>,",
+            "<leader>bb",
             function()
                 Snacks.picker.buffers()
             end,
@@ -259,20 +259,6 @@ return {
             end,
             desc = "Resume",
         },
-        {
-            "<leader>su",
-            function()
-                Snacks.picker.undo()
-            end,
-            desc = "Undo History",
-        },
-        {
-            "<leader>uC",
-            function()
-                Snacks.picker.colorschemes()
-            end,
-            desc = "Colorschemes",
-        },
         -- LSP
         {
             "gd",
@@ -388,13 +374,6 @@ return {
                 Snacks.lazygit()
             end,
             desc = "Lazygit",
-        },
-        {
-            "<leader>un",
-            function()
-                Snacks.notifier.hide()
-            end,
-            desc = "Dismiss All Notifications",
         },
         {
             "<c-/>",
