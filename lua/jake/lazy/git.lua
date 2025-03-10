@@ -12,7 +12,7 @@ return {
         },
         config = function()
             local neogit = require "neogit"
-            vim.keymap.set("n", "<leader>gs", neogit.open, { noremap = true, silent = true })
+            vim.keymap.set("n", "<leader>gs", neogit.open, { noremap = true, silent = true, desc = "Neogit" })
         end,
     },
     {
