@@ -47,7 +47,6 @@ return { -- Useful plugin to show you pending keybinds.
             { "<leader>b", group = "[B]uffers" },
             { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
             { "<leader>a", group = "Harpoon file", mode = { "n", "x" } },
-            { "<leader>d", group = "[D]ocument" },
             { "<leader>f", group = "[F]ind" },
             { "<leader>r", group = "[R]ename" },
             { "<leader>s", group = "[S]earch" },
