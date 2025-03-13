@@ -62,6 +62,8 @@ vim.opt.scrolloff = 10
 -- Disable mini.git
 vim.g.minigit_disable = true
 
+vim.opt.swapfile = false
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -73,8 +75,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = "LSP attach and Keymaps",
     group = vim.api.nvim_create_augroup("jake", { clear = true }),
@@ -123,4 +123,18 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "help",
     command = "wincmd L",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*.md",
+    callback = function()
+        require("lazy").load { spec = "jake.lazy.obsidian", plugins = {} }
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.opt.spell = true
+    end,
 })
