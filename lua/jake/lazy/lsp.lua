@@ -45,6 +45,7 @@ return {
                 "pyright",
                 "lua_ls",
                 "ts_ls",
+                "marksman",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
