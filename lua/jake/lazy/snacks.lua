@@ -16,7 +16,6 @@ return {
         explorer = { enabled = false },
     },
     keys = {
-        -- Top Pickers & Explorer
         {
             "<leader><space>",
             function()
@@ -51,14 +50,6 @@ return {
                 Snacks.picker.notifications()
             end,
             desc = "Notification History",
-        },
-        -- find
-        {
-            "<leader>fb",
-            function()
-                Snacks.picker.buffers()
-            end,
-            desc = "Buffers",
         },
         {
             "<leader>fc",
@@ -96,13 +87,6 @@ return {
             desc = "Recent",
         },
         -- Grep
-        {
-            "<leader>sb",
-            function()
-                Snacks.picker.lines()
-            end,
-            desc = "Buffer Lines",
-        },
         {
             "<leader>sB",
             function()
@@ -202,13 +186,6 @@ return {
                 Snacks.picker.icons()
             end,
             desc = "Icons",
-        },
-        {
-            "<leader>sj",
-            function()
-                Snacks.picker.jumps()
-            end,
-            desc = "Jumps",
         },
         {
             "<leader>sk",

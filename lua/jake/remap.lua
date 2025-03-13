@@ -9,6 +9,10 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- Navigate buffers more easily
+vim.keymap.set({ "n", "v" }, "<leader>bn", "<cmd>bn<CR>", { desc = "Next buffer" })
+vim.keymap.set({ "n", "v" }, "<leader>bp", "<cmd>bp<CR>", { desc = "Previous buffer" })
+
 -- Shift lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -21,10 +25,10 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Paste and Yank enhancements
-vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selected text" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
