@@ -2,8 +2,6 @@ vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "back to netrw explorer" })
-
 -- Cancel highlighted area
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
