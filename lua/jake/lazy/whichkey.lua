@@ -46,7 +46,8 @@ return { -- Useful plugin to show you pending keybinds.
         spec = {
             { "<leader>b", group = "[B]uffers" },
             { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-            { "<leader>a", group = "Harpoon file", mode = { "n", "x" } },
+            { "<leader>a", group = "Harpoon file to end", mode = { "n", "x" } },
+            { "<leader>A", group = "Harpoon file to start", mode = { "n", "x" } },
             { "<leader>f", group = "[F]ind" },
             { "<leader>m", group = "[M]arkdown" },
             { "<leader>r", group = "[R]ename" },

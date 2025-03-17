@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>vrn", function()
             vim.lsp.buf.rename()
         end, opts)
-        vim.keymap.set("i", "<C-h>", function()
+        vim.keymap.set("i", "<C-H>", function()
             vim.lsp.buf.signature_help()
         end, opts)
         vim.keymap.set("n", "[d", function()
