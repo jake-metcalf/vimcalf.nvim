@@ -1,7 +1,7 @@
 return {
     {
         "supermaven-inc/supermaven-nvim",
-        cmd = "SupermaverUseFree",
+        cmd = "SupermavenUseFree",
         config = function()
             require("supermaven-nvim").setup {}
         end,
