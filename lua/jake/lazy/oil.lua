@@ -16,7 +16,6 @@ return {
                 ["<C-p>"] = false,
                 ["<C-c>"] = false,
                 ["<C-l>"] = false,
-                ["<leader>oo"] = { "actions.cd" },
                 ["<leader>ol"] = { "actions.select", opts = { vertical = true } },
                 ["<leader>oj"] = { "actions.select", opts = { horizontal = true } },
                 ["-"] = { "actions.parent", mode = "n" },

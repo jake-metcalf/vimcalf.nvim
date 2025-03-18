@@ -25,7 +25,7 @@ return {
                 return res.code == 0 and "main" or "master"
             end
 
-            vim.keymap.set("n", "<leader>vh", require("gitsigns").preview_hunk, { desc = "Preview hunk" })
+            vim.keymap.set("n", "<leader>hp", require("gitsigns").preview_hunk, { desc = "Preview hunk" })
 
             -- Diff against local master branch
             vim.keymap.set("n", "<leader>hm", function()
