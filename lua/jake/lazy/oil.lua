@@ -8,8 +8,21 @@ return {
     config = function()
         local oil = require "oil"
 
-        oil.setup {}
-
+        oil.setup {
+            keymaps = {
+                ["<C-s>"] = false,
+                ["<C-h>"] = false,
+                ["<C-t>"] = false,
+                ["<C-p>"] = false,
+                ["<C-c>"] = false,
+                ["<C-l>"] = false,
+                ["<leader>oo"] = { "actions.cd" },
+                ["<leader>ol"] = { "actions.select", opts = { vertical = true } },
+                ["<leader>oj"] = { "actions.select", opts = { horizontal = true } },
+                ["-"] = { "actions.parent", mode = "n" },
+                ["_"] = { "actions.open_cwd", mode = "n" },
+            },
+        }
         _G.fuzzy_oil = function()
             local find_command = {
                 "fd",
@@ -49,5 +62,6 @@ return {
         end
 
         vim.keymap.set("n", "<leader>fd", _G.fuzzy_oil, { desc = "Fuzzy find directories with Oil" })
+        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end,
 }
