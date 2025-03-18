@@ -56,7 +56,7 @@ return { -- Useful plugin to show you pending keybinds.
             { "<leader>g", group = "[G]it" },
             { "<leader>t", group = "[T]esting" },
             { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-            { "<leader>d", group = "[D]elete without yanking" },
+            { "<leader>d", group = "[D]ebug" },
             { "<leader>l", group = "[L]SP" },
             { "<leader>o", group = "[O]il" },
         },
