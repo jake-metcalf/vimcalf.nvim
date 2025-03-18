@@ -4,7 +4,7 @@ return {
     lazy = true,
     ft = "markdown",
     dependencies = {
-        -- Required.
+        "nvim-telescope/telescope.nvim",
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
     },
