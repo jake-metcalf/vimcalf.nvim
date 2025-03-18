@@ -64,6 +64,8 @@ vim.g.minigit_disable = true
 
 vim.opt.swapfile = false
 
+vim.g.python3_host_prog = "/Users/jake/.pyenv/versions/py3nvim/bin/python"
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -75,41 +77,41 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-    desc = "LSP attach and Keymaps",
+vim.api.nvim_create_autocmd("lspattach", {
+    desc = "lsp attach and keymaps",
     group = vim.api.nvim_create_augroup("jake", { clear = true }),
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gd", function()
             vim.lsp.buf.definition()
-        end, opts)
+        end, { buffer = e.buf, desc = "go to definition" })
         vim.keymap.set("n", "K", function()
             vim.lsp.buf.hover()
-        end, opts)
-        vim.keymap.set("n", "<leader>vws", function()
+        end, { buffer = e.buf, desc = "Buf hover" })
+        vim.keymap.set("n", "<leader>lws", function()
             vim.lsp.buf.workspace_symbol()
-        end, opts)
-        vim.keymap.set("n", "<leader>vd", function()
+        end, { buffer = e.buf, desc = "Workspace symbol" })
+        vim.keymap.set("n", "<leader>ld", function()
             vim.diagnostic.open_float()
-        end, opts)
-        vim.keymap.set("n", "<leader>vca", function()
+        end, { buffer = e.buf, desc = "Open float" })
+        vim.keymap.set("n", "<leader>lca", function()
             vim.lsp.buf.code_action()
-        end, opts)
-        vim.keymap.set("n", "<leader>vrr", function()
+        end, { buffer = e.buf, desc = "Code action" })
+        vim.keymap.set("n", "<leader>lrr", function()
             vim.lsp.buf.references()
-        end, opts)
-        vim.keymap.set("n", "<leader>vrn", function()
+        end, { buffer = e.buf, desc = "References" })
+        vim.keymap.set("n", "<leader>lrn", function()
             vim.lsp.buf.rename()
-        end, opts)
-        vim.keymap.set("i", "<C-H>", function()
+        end, { buffer = e.buf, desc = "Rename" })
+        vim.keymap.set("i", "<c-h>", function()
             vim.lsp.buf.signature_help()
-        end, opts)
+        end, { buffer = e.buf, desc = "Signature help" })
         vim.keymap.set("n", "[d", function()
             vim.diagnostic.goto_next()
-        end, opts)
+        end, { buffer = e.buf, desc = "Go to next diagnostic" })
         vim.keymap.set("n", "]d", function()
             vim.diagnostic.goto_prev()
-        end, opts)
+        end, { buffer = e.buf, desc = "Go to previous diagnostic" })
     end,
 })
 
@@ -132,9 +134,25 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     end,
 })
 
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+    callback = function()
+        local cwd = vim.fn.getcwd()
+        if string.find(cwd, "") then
+            print "We're in the vault, baby"
+            require("lazy").load { spec = "jake.lazy.obsidian", plugins = {} }
+        end
+    end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         vim.opt.spell = true
     end,
 })
+
+if vim.fn.argc() == 0 then
+    vim.defer_fn(function()
+        vim.cmd "lua Snacks.picker.files()"
+    end, 0)
+end
