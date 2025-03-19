@@ -1,8 +1,7 @@
 return {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
+    -- cond = string.find(vim.fn.getcwd(), "vaults"),
     dependencies = {
         "nvim-telescope/telescope.nvim",
         "nvim-lua/plenary.nvim",
@@ -23,7 +22,7 @@ return {
             date_format = "%Y-%m-%d",
             alias_format = "%B %-d, %Y",
             default_tags = { "daily-notes" },
-            template = nil,
+            template = "todo.md",
         },
 
         completion = {
@@ -118,6 +117,9 @@ return {
 
             return out
         end,
+        templates = {
+            folder = "templates",
+        },
 
         -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
         -- URL it will be ignored but you can customize this behavior here.

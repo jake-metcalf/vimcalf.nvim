@@ -134,11 +134,9 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
+vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        local cwd = vim.fn.getcwd()
-        if string.find(cwd, "") then
-            print "We're in the vault, baby"
+        if string.find(vim.fn.isdirectory(vim.fn.expand "%:p"), "vault") then
             require("lazy").load { spec = "jake.lazy.obsidian", plugins = {} }
         end
     end,
