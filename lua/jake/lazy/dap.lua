@@ -12,7 +12,9 @@ return {
             local dapui = require "dapui"
             local dap_python = require "dap-python"
 
-            require("dapui").setup {}
+            require("dapui").setup {
+                sidebar = { open_on_start = false },
+            }
             require("nvim-dap-virtual-text").setup {
                 commented = true, -- Show virtual text alongside comment
             }
@@ -80,6 +82,10 @@ return {
             -- Toggle DAP UI
             vim.keymap.set("n", "<leader>du", function()
                 dapui.toggle()
+            end, opts)
+
+            vim.keymap.set("n", "<leader>ds", function()
+                dapui.toggle(1)
             end, opts)
         end,
     },
