@@ -1,7 +1,7 @@
 return {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
-    -- cond = string.find(vim.fn.getcwd(), "vaults"),
+    lazy = false,
     dependencies = {
         "nvim-telescope/telescope.nvim",
         "nvim-lua/plenary.nvim",
@@ -264,4 +264,7 @@ return {
             end,
         },
     },
+    config = function()
+        vim.keymap.set("n", "<leader>mt", ":ObsidianToday<CR>", { desc = "Today's notes" })
+    end,
 }
