@@ -21,6 +21,7 @@ return {
                 ["-"] = { "actions.parent", mode = "n" },
                 ["_"] = { "actions.open_cwd", mode = "n" },
             },
+            view_options = { show_hidden = true },
         }
         _G.fuzzy_oil = function()
             local find_command = {
