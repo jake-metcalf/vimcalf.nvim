@@ -1,7 +1,7 @@
 return {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
-    lazy = false,
+    lazy = true,
     dependencies = {
         "nvim-telescope/telescope.nvim",
         "nvim-lua/plenary.nvim",
@@ -266,5 +266,6 @@ return {
     },
     config = function()
         vim.keymap.set("n", "<leader>mt", ":ObsidianToday<CR>", { desc = "Today's notes" })
+        vim.keymap.set("n", "<leader>my", ":ObsidianYesterday<CR>", { desc = "Yesterday's notes" })
     end,
 }

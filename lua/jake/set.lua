@@ -127,19 +127,18 @@ vim.api.nvim_create_autocmd("FileType", {
     command = "wincmd L",
 })
 
--- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
---     pattern = "*.md",
---     callback = function()
---         require("lazy").load { spec = "jake.lazy.obsidian", plugins = {} }
---     end,
--- })
-
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        local obsidian = require "jake.lazy.obsidian"
-        if string.find(vim.fn.expand "%:p", "vaults") then
-            vim.notify "we're in!"
-            require("lazy").load { spec = "jake.lazy.obsidian", plugins = {} }
+        vim.g.obsidian_initialized = vim.g.obsidian_initialized or false
+        if not vim.g.obsidian_intialised then
+            if string.find(vim.fn.expand "%:p", "vaults") then
+                vim.notify "we're in in the vault, baby!"
+                require("lazy").load { plugins = { "obsidian.nvim" } }
+                local obsidian = require "obsidian"
+                local obsidian_config = require("lazy.core.config").plugins["obsidian.nvim"].opts
+                obsidian.setup(obsidian_config)
+                vim.g.obsidian_intialised = true
+            end
         end
     end,
 })
