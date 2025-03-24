@@ -267,5 +267,6 @@ return {
     config = function()
         vim.keymap.set("n", "<leader>mt", ":ObsidianToday<CR>", { desc = "Today's notes" })
         vim.keymap.set("n", "<leader>my", ":ObsidianYesterday<CR>", { desc = "Yesterday's notes" })
+        vim.keymap.set("n", "<leader>mf", ":ObsidianTomorrow<CR>", { desc = "Tomorrow's notes" })
     end,
 }
