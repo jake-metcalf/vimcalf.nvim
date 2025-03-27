@@ -28,9 +28,15 @@ return {
         require("conform").setup {
             formatters_by_ft = {
                 lua = { "stylua" },
-                python = { "isort", "black" },
                 javascript = { "prettier", stop_after_first = true },
                 typescript = { "prettier", stop_after_first = true },
+                python = function(bufnr)
+                    if require("conform").get_formatter_info("ruff_format", bufnr).available then
+                        return { "ruff_format" }
+                    else
+                        return { "isort", "black" }
+                    end
+                end,
                 typescriptreact = { "prettier", stop_after_first = true },
             },
         }
@@ -42,7 +48,7 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup {
             ensure_installed = {
-                "pyright",
+                "basedpyright",
                 "lua_ls",
                 "ts_ls",
                 "marksman",
@@ -74,6 +80,18 @@ return {
                             "typescript",
                             "typescriptreact",
                             "typescript.tsx",
+                        },
+                    }
+                end,
+                ["basedpyright"] = function()
+                    lspconfig["basedpyright"].setup {
+                        capabilities = capabilities,
+                        settings = {
+                            basedpyright = {
+                                analysis = {
+                                    typeCheckingMode = "basic",
+                                },
+                            },
                         },
                     }
                 end,
