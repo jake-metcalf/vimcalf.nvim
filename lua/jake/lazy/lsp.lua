@@ -50,7 +50,8 @@ return {
             ensure_installed = {
                 "basedpyright",
                 "lua_ls",
-                "ts_ls",
+                --"ts_ls",
+                "vtsls",
                 "marksman",
             },
             handlers = {
@@ -73,16 +74,16 @@ return {
                         },
                     }
                 end,
-                ["ts_ls"] = function()
-                    lspconfig.ts_ls.setup {
-                        capabilities = capabilities,
-                        filetypes = {
-                            "typescript",
-                            "typescriptreact",
-                            "typescript.tsx",
-                        },
-                    }
-                end,
+                --                ["ts_ls"] = function()
+                --                    lspconfig.ts_ls.setup {
+                --                        capabilities = capabilities,
+                --                        filetypes = {
+                --                            "typescript",
+                --                            "typescriptreact",
+                --                            "typescript.tsx",
+                --                        },
+                --                    }
+                --                end,
                 ["basedpyright"] = function()
                     lspconfig["basedpyright"].setup {
                         capabilities = capabilities,
