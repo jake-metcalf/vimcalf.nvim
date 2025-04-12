@@ -13,9 +13,7 @@ return {
                     },
                     schema = {
                         model = {
-                            default = function()
-                                return "gpt-4o"
-                            end,
+                            default = "gpt-4o",
                         },
                     },
                 })
@@ -23,6 +21,7 @@ return {
         },
         strategies = {
             chat = {
+                adapter = "openai",
                 tools = {
                     ["mcp"] = {
                         -- calling it in a function would prevent mcphub from being loaded before it's needed
