@@ -4,7 +4,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
         local harpoon = require "harpoon"
-
         harpoon:setup()
 
         vim.keymap.set("n", "<leader>a", function()
@@ -13,28 +12,28 @@ return {
         vim.keymap.set("n", "<leader>A", function()
             harpoon:list():prepend()
         end)
-        vim.keymap.set("n", "<C-a>", function()
+        vim.keymap.set("n", "<Tab>q", function()
             harpoon.ui:toggle_quick_menu(harpoon:list())
         end)
 
-        vim.keymap.set("n", "<C-Y>", function()
+        vim.keymap.set("n", "<Tab>y", function()
             harpoon:list():select(1)
         end)
-        vim.keymap.set("n", "<C-U>", function()
+        vim.keymap.set("n", "<Tab>u", function()
             harpoon:list():select(2)
         end)
-        vim.keymap.set("n", "<C-I>", function()
+        vim.keymap.set("n", "<Tab>i", function()
             harpoon:list():select(3)
         end)
-        vim.keymap.set("n", "<C-O>", function()
+        vim.keymap.set("n", "<Tab>o", function()
             harpoon:list():select(4)
         end)
 
         -- Toggle previous & next buffers stored within Harpoon list
-        vim.keymap.set("n", "<C-P>", function()
+        vim.keymap.set("n", "<Tab>p", function()
             harpoon:list():prev()
         end)
-        vim.keymap.set("n", "<C-N>", function()
+        vim.keymap.set("n", "<Tab>n", function()
             harpoon:list():next()
         end)
     end,
