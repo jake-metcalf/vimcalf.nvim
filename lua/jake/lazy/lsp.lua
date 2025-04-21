@@ -38,6 +38,7 @@ return {
                     end
                 end,
                 typescriptreact = { "prettier", stop_after_first = true },
+                go = { "goimports", "gofmt" },
             },
         }
         local cmp = require "cmp"
@@ -52,6 +53,7 @@ return {
                 "lua_ls",
                 "ts_ls",
                 "marksman",
+                "gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -91,6 +93,22 @@ return {
                                 analysis = {
                                     typeCheckingMode = "basic",
                                 },
+                            },
+                        },
+                    }
+                end,
+                ["gopls"] = function()
+                    lspconfig["gopls"].setup {
+                        capabilities = capabilities,
+                        settings = {
+                            gopls = {
+                                experimentalPostfixCompletions = true,
+                                analyses = {
+                                    unusedparams = true,
+                                    shadow = true,
+                                    fieldalignment = true,
+                                },
+                                staticcheck = true,
                             },
                         },
                     }
