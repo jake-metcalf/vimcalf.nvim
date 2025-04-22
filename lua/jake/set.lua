@@ -66,6 +66,12 @@ vim.opt.swapfile = false
 
 vim.g.python3_host_prog = "/Users/jake/.pyenv/versions/py3nvim/bin/python"
 
+------- MACROS ---------
+
+local esc = vim.api.nvim_replace_termcodes("<Esc>", true, true, true)
+vim.fn.setreg("l", "yologger.info(f'" .. esc .. "pa: {" .. esc .. "pa}')")
+
+------- AUTO COMMANDS --------
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
