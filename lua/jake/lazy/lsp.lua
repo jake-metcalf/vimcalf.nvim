@@ -2,8 +2,8 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "stevearc/conform.nvim",
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        { "mason-org/mason.nvim", version = "1.11.0" },
+        { "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -32,13 +32,14 @@ return {
                 typescript = { "prettier", stop_after_first = true },
                 python = function(bufnr)
                     if require("conform").get_formatter_info("ruff_format", bufnr).available then
-                        return { "ruff_format" }
+                        return { "ruff_format", "isort" }
                     else
                         return { "isort", "black" }
                     end
                 end,
                 typescriptreact = { "prettier", stop_after_first = true },
                 go = { "goimports", "gofmt" },
+                terraform = { "terraform_fmt" },
             },
         }
         local cmp = require "cmp"
