@@ -27,7 +27,7 @@ return {
         end, { desc = "Go to Harpooned file 3" })
         vim.keymap.set("n", "<Tab>o", function()
             harpoon:list():select(4)
-        end, { desc = "Go to Harpooned file 4")
+        end, { desc = "Go to Harpooned file 4" })
 
         -- Toggle previous & next buffers stored within Harpoon list
         vim.keymap.set("n", "<Tab>p", function()
