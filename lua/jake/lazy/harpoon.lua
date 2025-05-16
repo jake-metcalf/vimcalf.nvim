@@ -18,23 +18,23 @@ return {
 
         vim.keymap.set("n", "<Tab>y", function()
             harpoon:list():select(1)
-        end, { desc = "Go to Harpooned file 1" })
+        end, { desc = "Harpoon 1" })
         vim.keymap.set("n", "<Tab>u", function()
             harpoon:list():select(2)
-        end, { desc = "Go to Harpooned file 2" })
+        end, { desc = "Harpoon 2" })
         vim.keymap.set("n", "<Tab>i", function()
             harpoon:list():select(3)
-        end, { desc = "Go to Harpooned file 3" })
+        end, { desc = "Harpoon 3" })
         vim.keymap.set("n", "<Tab>o", function()
             harpoon:list():select(4)
-        end, { desc = "Go to Harpooned file 4" })
+        end, { desc = "Harpoon 4" })
 
         -- Toggle previous & next buffers stored within Harpoon list
         vim.keymap.set("n", "<Tab>p", function()
             harpoon:list():prev()
-        end, { desc = "Go to previous Harpooned file" })
+        end, { desc = "Previous harpoon" })
         vim.keymap.set("n", "<Tab>n", function()
             harpoon:list():next()
-        end, { desc = "Go to next Harpooned file" })
+        end, { desc = "Next harpoon" })
     end,
 }
