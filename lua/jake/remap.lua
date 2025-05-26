@@ -5,6 +5,7 @@ vim.g.maplocalleader = " "
 -- Cancel highlighted area
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- Jump forward
 vim.keymap.set("n", "<leader>Tab", "C-i", { desc = "Jump forward" })
 
 -- Diagnostic keymaps
@@ -30,8 +31,10 @@ vim.keymap.set("n", "G", "Gzz")
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selected text" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to clipboard" })
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without adding to reg" })
 vim.keymap.set({ "n", "v" }, "<leader>yy", ":%y<CR>", { desc = "Yank entire buffer" })
+vim.keymap.set("n", "<leader><leader>d", 'gg_"_dG', { desc = "Delete entire buffer" })
+vim.keymap.set("n", "<leader><leader>p", 'gg_"_dG_P', { desc = "Replace entire buffer with latest reg" })
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
