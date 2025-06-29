@@ -56,6 +56,7 @@ return {
                 "marksman",
                 "gopls",
                 "html",
+                "terraformls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -121,6 +122,19 @@ return {
                         capabilities = capabilities,
                         filetypes = {
                             "html",
+                        },
+                    }
+                end,
+                ["terraformls"] = function()
+                    lspconfig["terraformls"].setup {
+                        capabilities = capabilities,
+                        filetypes = { "terraform", "tf" },
+                        settings = {
+                            terraform = {
+                                format = {
+                                    enabled = true,
+                                },
+                            },
                         },
                     }
                 end,
