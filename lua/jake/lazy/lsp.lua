@@ -55,6 +55,7 @@ return {
                 "ts_ls",
                 "marksman",
                 "gopls",
+                "html",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -83,6 +84,7 @@ return {
                             "typescript",
                             "typescriptreact",
                             "typescript.tsx",
+                            "javascript",
                         },
                     }
                 end,
@@ -111,6 +113,14 @@ return {
                                 },
                                 staticcheck = true,
                             },
+                        },
+                    }
+                end,
+                ["html"] = function()
+                    lspconfig["html"].setup {
+                        capabilities = capabilities,
+                        filetypes = {
+                            "html",
                         },
                     }
                 end,
