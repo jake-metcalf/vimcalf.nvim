@@ -2,8 +2,8 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "stevearc/conform.nvim",
-        { "mason-org/mason.nvim", version = "1.11.0" },
-        { "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
+        { "mason-org/mason.nvim" },
+        { "mason-org/mason-lspconfig.nvim" },
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -57,6 +57,7 @@ return {
                 "gopls",
                 "html",
                 "terraformls",
+                "svelte",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -136,6 +137,12 @@ return {
                                 },
                             },
                         },
+                    }
+                end,
+                ["svelte"] = function()
+                    lspconfig["svelte"].setup {
+                        capabilities = capabilities,
+                        filetypes = { "svelte" },
                     }
                 end,
             },

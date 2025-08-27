@@ -156,6 +156,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "svelte",
+    callback = function(args)
+        vim.treesitter.start(args.buf, "svelte")
+    end,
+})
+
 if vim.fn.argc() == 0 then
     vim.defer_fn(function()
         vim.cmd "lua Snacks.picker.files()"
