@@ -46,7 +46,7 @@ return {
                     prepend_args = { "--line-length", "110" },
                 },
                 ruff_format = {
-                    prepend_args = { "--line-length", "110" },
+                    prepend_args = { "format --line-length", "110" },
                 },
             },
         }
