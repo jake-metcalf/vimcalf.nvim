@@ -41,6 +41,14 @@ return {
                 go = { "goimports", "gofmt" },
                 terraform = { "terraform_fmt" },
             },
+            formatters = {
+                black = {
+                    prepend_args = { "--line-length", "110" },
+                },
+                ruff_format = {
+                    prepend_args = { "--line-length", "110" },
+                },
+            },
         }
         local cmp = require "cmp"
         local cmp_lsp = require "cmp_nvim_lsp"
