@@ -6,18 +6,20 @@ return {
     },
     opts = {
         adapters = {
-            openai = function()
-                return require("codecompanion.adapters").extend("openai", {
-                    env = {
-                        api_key = os.getenv "OPENAI_API_KEY_ASX",
-                    },
-                    schema = {
-                        model = {
-                            default = "gpt-4o",
+            http = {
+                openai = function()
+                    return require("codecompanion.adapters").extend("openai", {
+                        env = {
+                            api_key = os.getenv "OPENAI_API_KEY_ASX",
                         },
-                    },
-                })
-            end,
+                        schema = {
+                            model = {
+                                default = "gpt-4o",
+                            },
+                        },
+                    })
+                end,
+            },
         },
         strategies = {
             chat = {
