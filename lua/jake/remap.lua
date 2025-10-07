@@ -2,6 +2,9 @@ vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Allow Wq as wq
+vim.keymap.set({ "n", "v" }, ":Wq", ":wq", { desc = "Help save clumsily" })
+
 -- Cancel highlighted area
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
