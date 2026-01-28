@@ -60,3 +60,11 @@ vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CodeCompanionChat Toggle<cr>", 
 vim.keymap.set({ "n", "v" }, "<C-c>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>ca", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 vim.cmd [[cab cc CodeCompanion]]
+
+-- Python debugger shortcut
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function()
+        vim.keymap.set("n", "<leader>mm", "oimport ipdb; ipdb.set_trace()<Esc>", { buffer = true, desc = "Insert ipdb breakpoint" })
+    end,
+})
