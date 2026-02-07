@@ -9,7 +9,10 @@ vim.api.nvim_create_user_command("Wq", "wq", {})
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Jump forward
-vim.keymap.set("n", "<leader>Tab", "C-i", { desc = "Jump forward" })
+vim.keymap.set("n", "<leader><Tab>", "<C-i>", { desc = "Jump forward" })
+
+-- Redo with <C-y> (replaces default scroll-up-one-line)
+vim.keymap.set("n", "<C-y>", "<C-r>", { desc = "Redo" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
